@@ -14,7 +14,7 @@ int checkSoc;
 
 char error[15];
 
-void batteryIsOk() {
+void batteryIsOk(int checkChargeRate, int checkSoc, int checkTemperature) {
   if(checkChargeRate && checkSoc && checkTemperature)
   {
     printf("The battery is NOT_OK");
@@ -27,7 +27,7 @@ void printError( char error[])
   printf("Error in parameter: %s, Value out of range", error);
 }
 
-int ChecktheRangeForEverything( float value, float Max, float Min, char Testedparameter[])
+int CheckRangeForEverything( float value, float Max, float Min, char Testedparameter[])
 {
   if( value > Min && value < Max)
   {
@@ -45,5 +45,5 @@ int main() {
   checkChargeRate = CheckRangeForEverything(25,MaxChargeRate, MinChargeRate, "ChargeRate");
   checkSoc = CheckRangeForEverything(50, MaxSoc, MinSoc, "Soc");
   checkTemperature = CheckRangeForEverything(15, MaxTemp, MinTemp, "Temperature");
-  assert(batteryIsOk());
+  assert(batteryIsOk(0, 1, 0));
 }
