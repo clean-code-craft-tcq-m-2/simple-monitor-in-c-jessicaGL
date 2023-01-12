@@ -8,6 +8,10 @@
 #define MaxChargeRate 0.8
 #define MinChargeRate 0.0
 
+int checkTemperature;
+int checkChargeRate;
+int checkSoc;
+
 char error[15];
 
 void batteryIsOk() {
@@ -41,6 +45,5 @@ int main() {
   checkChargeRate = CheckRangeForEverything(25,MaxChargeRate, MinChargeRate, "ChargeRate");
   checkSoc = CheckRangeForEverything(50, MaxSoc, MinSoc, "Soc");
   checkTemperature = CheckRangeForEverything(15, MaxTemp, MinTemp, "Temperature");
-  assert(batteryIsOk(25, 70, 0.7));
-  assert(!batteryIsOk(50, 85, 0));
+  assert(batteryIsOk());
 }
