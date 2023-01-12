@@ -14,10 +14,15 @@ int checkSoc;
 
 char error[15];
 
-void batteryIsOk(int checkChargeRate, int checkSoc, int checkTemperature) {
+int batteryIsOk(int checkChargeRate, int checkSoc, int checkTemperature) {
   if(checkChargeRate && checkSoc && checkTemperature)
   {
     printf("The battery is NOT_OK");
+    return 1;
+  }
+  else
+  {
+    return 0;
   }
   
 }
@@ -45,5 +50,6 @@ int main() {
   checkChargeRate = CheckRangeForEverything(25,MaxChargeRate, MinChargeRate, "ChargeRate");
   checkSoc = CheckRangeForEverything(50, MaxSoc, MinSoc, "Soc");
   checkTemperature = CheckRangeForEverything(15, MaxTemp, MinTemp, "Temperature");
-  assert(batteryIsOk(0, 1, 0));
+  assert(batteryIsOk(0, 1, 0) == 0);
+  assert(batteryIsOk(1,1,1)== 1);
 }
